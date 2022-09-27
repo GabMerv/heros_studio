@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<br>
+<div id="text-anime">
+    <span id="text1"></span>
+    <span id="text2"></span>
+</div>
+<svg id="filters">
+    <defs>
+        <filter id="threshold">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+                  0 1 0 0 0
+                  0 0 1 0 0
+                  0 0 0 255 -140" />
+        </filter>
+    </defs>
+</svg>
+    <div id="presentationDiv" class="box">
+        <h1>Qui sommes nous?</h1>
+    <p>    Nous sommes une équipe de jeunes lycéens passionnés de cinéma qui ont le projet de réaliser ensemble un court-métrage de A à Z. Cette équipe comprend plus d'une vingtaine de personnes rassemblant plusieurs savoir-faire du cinéma : réalisateur, cadreur, ingé son, producteur... et bien sûr acteurs. Le tournage se déroulera cet été et à la Toussaint, pendant 2 semaines, dans des décors grandioses en Vendée et à Paris. 
+    </p>
+    </div>
+    
+   
+
+
+<div id="teamDiv" class="box">
+    <h1>L'équipe</h1>
+    <img src="static/images/team.png">
+
+</div>
+
+<div id="projetDiv" class="box">
+    <h1>Le premier cinéaste</h1><br>
+    <p>
+        Ce film suit la vie du premier réalisateur français au tout début du XXe siècle. Passionné de théâtre et d’abord comédien, André Calmettes se lance dans la réalisation du premier film de l’histoire du cinéma qu'il intitule "L'Assassinat du Duc de Guise". C’est après avoir découvert les prodiges du “cinématographe” des frères Lumières qu’il a l’idée d’exploiter cette découverte révolutionnaire en tournant le premier film scénarisé français. Véritable précurseur et père fondateur du cinéma tel qu’on le connaît aujourd’hui, notre héros va tout faire pour mener à bien son projet, ce qui l’amènera à rencontrer des grands noms du théâtre et du 7e art tels que Sarah Bernhardt ou George Méliès. </div>
+
+    </p>
+<div id="tournageDiv" class="box">
+    <h1>Le tournage</h1>
+    <section id="slider">
+        <input type="radio" name="slider" id="s1" class="radio" checked >
+        <input type="radio" name="slider" id="s2" class="radio">
+        <input type="radio" name="slider" id="s3" class="radio">
+        <input type="radio" name="slider" id="s4" class="radio">
+        <input type="radio" name="slider" id="s5" class="radio">
+      
+        <label for="s1" id="slide1"><img src="static/images/tournage.jpg" alt=""></label>
+        <label for="s2" id="slide2"><img src="static/images/tournage_1.jpg" alt=""></label>
+        <label for="s3" id="slide3"><img src="static/images/tournage_2.jpg" alt=""></label>
+        <label for="s4" id="slide4"><img src="static/images/tournage_3.jpg" alt=""></label>
+        <label for="s5" id="slide5"><img src="static/images/tournage_4.jpg" alt=""></label>
+      </section>
+</div>
+
+
+<div id="soutientDiv" class="box">
+    <h1>Soutenez nous!</h1><br>
+<p>
+    Ce projet qui nous tient tant à cœur ne sera réalisable qu'avec votre aide. C’est pourquoi nous faisons appel à votre générosité pour le soutenir afin que nous puissions, ensemble, créer une œuvre magnifique. Nous avons besoin de:
+   <p class="prix">
+    <br>- 1250€ pour les décors (location de décors à Paris,…)
+    <br>- 1000€ de costumes et accessoires (plus de 70 personnages à habiller, accessoires d’époque…)
+    <br>- 1800€ de location de matériels techniques (caméras, stabilisateur, drone, prise de son…)
+    <br>- 450€ pour l'intendance, les frais d’association…
+    <br>- 500€ pour la soirée d’avant première au cinéma 
+    <br>
+    </p>
+    <br>
+    Soit, au total, 5000 €. Nous avons déjà récupéré 1500€ via l'autre plateforme, merci encore de votre générosité!  
+    <br>
+    Évidemment, ceux qui ont déjà fait un don ont le droit aux mêmes avantages !! 
+    <br>
+    Vous pouvez faire un don directement sur cette plateforme et n’oubliez pas que chaque don concrétisera petit à petit notre projet.
+    <br>
+    Merci beaucoup pour votre participation !
+    <br>
+</p>
+<br>
+<a href="https://www.helloasso.com/associations/heros-studio/collectes/tournage-heros-studio" class="cagnotte" target="_blank">Lien vers la cagnotte en ligne</a>
+<br>
+</div>
+
+<div id="contactsDiv">
+    <h1>Contacts</h1>
+<br>
+
+<ul class="contactsUl">
+  <li>
+    <a href="https://www.instagram.com/heros.studio_/" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </li>
+  <li>
+    <a href="mailto: heros.studio22@gmail.com">
+      <i class="fab fa-google"></i>
+    </a>
+    </li>
+</ul>
+
+</div>
+
+{% endblock %}

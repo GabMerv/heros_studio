@@ -1,0 +1,630 @@
+@import url('https://fonts.googleapis.com/css2?family=Rokkitt&display=swap');
+
+/*
+Test
+*/
+@import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap'); /*Bonne police mais à l'envers*/
+
+/*
+Comportements de la page
+*/
+
+@media only screen and (max-width: 1026px) {
+  #centerLogo {
+      display: none;
+  }
+  #semi-circle {
+    display: none;
+  }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/*
+Animations
+.glow => effet brillance blanc vers noir
+.unglow => effet brillance noir vers blanc
+*/
+
+@keyframes glow {
+    from {
+      text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #aaaaaa, 0 0 4px #6e6e6e, 0 0 5px #4e4e4e, 0 0 6px #3a3a3a, 0 0 7px #111111;
+    }
+    to {
+      text-shadow: 0 0 2px #fff, 0 0 3px #aaaaaa, 0 0 4px #6e6e6e, 0 0 5px #4e4e4e, 0 0 6px #3a3a3a, 0 0 7px #111111, 0 0 8px #070707;
+    }
+}
+
+@keyframes unglow {
+    from {
+    text-shadow: 0 0 1px #111111, 0 0 2px #3a3a3a, 0 0 3px #4e4e4e, 0 0 4px #6e6e6e, 0 0 5px #aaaaaa, 0 0 6px #fff, 0 0 7px #fff;
+    }
+    to {
+      text-shadow:0 0 2px #111111, 0 0 3px #3a3a3a, 0 0 4px #4e4e4e, 0 0 5px #6e6e6e, 0 0 6px #aaaaaa, 0 0 7px #fff;
+    }
+}
+
+/*
+Général
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+    box-sizing: border-box;
+  }
+
+html {
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+body {
+    background-color: #101010;
+}
+
+
+h1 {
+    padding: 10px;
+    font-family: "Baskerville Old Face";
+}
+
+p {
+  font-family: 'Rokkitt', serif;
+  margin: auto;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+
+/*
+Boites contenant les différentes sections de la page
+*/
+.box {
+  width: 75%;
+  height: 75%;
+  margin: auto;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/*
+Arrière plan flouté sur une partie de la page
+*/
+.background-img {
+  background-image: url("/static/images/blur_bg.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*
+Gestion des éléments persistants de la barre de navigation
+CF: sticky.js
+*/
+#stickedElements {
+  background-color: #101010;
+  width: 100%;
+  left:0;
+  right:0;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  padding-bottom: 5px ;
+}
+
+
+/* -----------------------------------------------------------------------------
+                                Navbar
+--------------------------------------------------------------------------------*/
+#navBar {
+  position: relative;  
+  z-index: 10000;
+  text-align: center;
+  background-color: #101010;
+  padding: 5px;
+  top:0;
+  left: 0;
+  right: 0;
+}
+
+/*
+Sections de la navBar
+*/
+
+#navBar div ul li{
+    display: inline;
+    color: white;
+    padding: 40px;
+    margin: 10px;
+    font-family: "Baskerville Old Face";
+    font-size: 20px;
+
+}
+
+#navBar div ul li a{
+    background: #101010;
+}
+
+/*
+Animation des liens de la navBar
+*/
+
+
+#navBar div ul li a::before,
+#navBar div ul li a::after {
+   content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+  }
+
+#navBar div ul li a::before {
+    background-color: #ffffff;
+    height: 2px;
+    bottom: 0;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+#navBar div ul li a::after {
+    content: attr(data-replace);
+    height: 100%;
+    top: 0;
+    transform-origin: 100% 50%;
+    transform: translate3d(200%, 0, 0);
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+    color: #ffffff;
+    text-align: center;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+  
+#navBar div ul li a:hover::before {
+    transform-origin: 0% 50%;
+    transform: scaleX(1);
+  }
+#navBar div ul li a:hover::after {
+    transform: translate3d(0, 0, 0);
+    
+  }
+  
+#navBar div ul li a span {
+    display: inline-block;
+    transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  
+#navBar div ul li a:hover span {
+    transform: translate3d(-200%, 0, 0);
+    color: #fff;
+    text-align: center;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+ 
+
+/*
+Composants annexes de la navBar:
+-> logo hero studio
+-> demi cercle qui contient le logo
+*/
+#centerLogo{
+  padding-top: 5px;
+  width: 5%;
+  position: relative;
+}
+
+#semi-circle {
+  opacity: 0;
+  border-bottom-left-radius: 80%;
+  border-bottom-right-radius: 80%;
+  position:fixed;
+  width: 8.8%;
+  z-index: -1;
+  height: 12%;
+  left:45.7%;
+  top:0;
+  background-color:#101010;
+}
+
+/* -----------------------------------------------------------------------------
+                                Image bannière
+--------------------------------------------------------------------------------*/
+
+.bannerimage {
+  width: 100%;
+  
+}
+/* -----------------------------------------------------------------------------
+                                Présentation
+--------------------------------------------------------------------------------*/
+  
+#presentationDiv {
+  background-color: rgba(255, 255, 255, 0.692);
+    color: #101010;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 10%;
+    padding-top: 5%;
+    text-align: center;
+    font-size: 25px;
+}
+
+
+
+/* -----------------------------------------------------------------------------
+                                Texte animé
+--------------------------------------------------------------------------------*/
+#text-anime {
+    padding: 0px;
+    margin: auto;
+    width: 100vw;
+    height: 80pt;
+    filter: url(#threshold) blur(0.6px);
+    
+}
+
+#text1,
+#text2 {
+    position:absolute;
+    width: 100%;
+
+    font-family: "Baskerville Old Face";
+    
+    font-size: 100pt;
+
+    text-align: center;
+
+    user-select: none;
+    z-index: 1;
+    color: white;
+}
+
+/* -----------------------------------------------------------------------------
+                                Equipe
+--------------------------------------------------------------------------------*/
+#teamDiv {
+    background-color: #101010af;
+    color: white;
+    text-align: center;
+    padding: 10%;
+    padding-top: 5%;
+
+}
+
+#teamDiv h1 {
+    font-size: 60px;
+}
+
+#teamDiv img {
+    width: 100%;
+}
+
+
+/* -----------------------------------------------------------------------------
+                                Projet
+--------------------------------------------------------------------------------*/
+
+#projetDiv {
+  background-color: rgba(255, 255, 255, 0.692);;
+    text-align: center;
+    padding: 10%;
+    padding-top: 5%;
+    text-align: center;
+    font-size: 25px;
+
+}
+
+
+/* -----------------------------------------------------------------------------
+                                Tournage
+--------------------------------------------------------------------------------*/
+
+#tournageDiv {
+    background-color: #101010af;
+    color: white;
+    text-align: center;
+    padding: 10%;
+    padding-top: 5%;
+
+}
+
+
+#tournageDiv h1 {
+  font-size: 60px;
+}
+
+#tournageDiv img {
+    border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  z-index:0;
+}
+
+
+
+/*
+Caroussel d'images
+*/
+
+  
+#slider {
+  position: relative;
+  width: 70%;
+  height: 32vw;
+  margin: 150px auto;
+  font-family: 'Helvetica Neue', sans-serif;
+  perspective: 1400px;
+  transform-style: preserve-3d;
+  z-index: 0;
+}
+
+.radio {
+  display: none;
+}
+
+
+/*
+Gestion des inputs
+*/
+
+input[type=radio] {
+  position: relative;
+  top: 108%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin: 0 15px 0 0;
+  opacity: 0.4;
+  transform: translateX(-83px);
+  cursor: pointer;
+}
+
+
+input[type=radio]:nth-child(5) {
+  margin-right: 0px;
+}
+
+input[type=radio]:checked {
+  opacity: 1;
+}
+
+/*
+Gestion des images
+*/
+#slider label,
+#slider label img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  color: white;
+  font-size: 70px;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 400ms ease;
+}
+
+
+
+/* Fonctionnalités: différents affichages */
+
+/* Active Slide */
+#s1:checked ~ #slide1,
+ #s2:checked ~ #slide2,
+  #s3:checked ~ #slide3,
+   #s4:checked ~ #slide4,
+    #s5:checked ~ #slide5 {
+  box-shadow: 0 13px 26px rgba(0,0,0, 0.3), 0 12px 6px rgba(0,0,0, 0.2);
+  transform: translate3d(0%, 0, 0px);
+}
+
+/* Next Slide */
+#s1:checked ~ #slide2,
+ #s2:checked ~ #slide3,
+  #s3:checked ~ #slide4,
+   #s4:checked ~ #slide5,
+    #s5:checked ~ #slide1 {
+  box-shadow: 0 6px 10px rgba(0,0,0, 0.3), 0 2px 2px rgba(0,0,0, 0.2);
+  transform: translate3d(20%, 0, -100px);
+}
+
+/* Next to Next Slide */
+#s1:checked ~ #slide3,
+ #s2:checked ~ #slide4,
+  #s3:checked ~ #slide5,
+   #s4:checked ~ #slide1,
+    #s5:checked ~ #slide2 {
+  box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
+  transform: translate3d(40%, 0, -250px);
+}
+
+/* Previous to Previous Slide */
+#s1:checked ~ #slide4,
+ #s2:checked ~ #slide5,
+  #s3:checked ~ #slide1,
+   #s4:checked ~ #slide2,
+    #s5:checked ~ #slide3 {
+  box-shadow: 0 1px 4px rgba(0,0,0, 0.4);
+  transform: translate3d(-40%, 0, -250px);
+}
+
+/* Previous Slide */
+#s1:checked ~ #slide5,
+ #s2:checked ~ #slide1,
+  #s3:checked ~ #slide2,
+   #s4:checked ~ #slide3,
+    #s5:checked ~ #slide4 {
+  box-shadow: 0 6px 10px rgba(0,0,0, 0.3), 0 2px 2px rgba(0,0,0, 0.2);
+  transform: translate3d(-20%, 0, -100px);
+}
+
+
+/* -----------------------------------------------------------------------------
+                                Soutient
+--------------------------------------------------------------------------------*/
+
+#soutientDiv {
+  background-color: rgba(255, 255, 255, 0.692);;
+    text-align: center;
+    padding: 10%;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 5%;
+
+}
+
+.prix {
+  text-align: left;
+}
+
+/*
+Lien vers la cagnotte
+*/
+.cagnotte {
+  color: black
+}
+
+/*
+Animation du lien
+*/
+.cagnotte:hover {
+  animation: unglow 1s ease-in-out infinite alternate;
+}
+.cagnotte::before,
+.cagnotte::after {
+ content: '';
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+.cagnotte::before {
+  background-color: #000000;
+  height: 2px;
+  bottom: 0;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.cagnotte::after {
+  content: attr(data-replace);
+  height: 100%;
+  top: 0;
+  transform-origin: 100% 50%;
+  transform: translate3d(200%, 0, 0);
+  transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  color: #000000;
+  text-align: center;
+  animation: unglow 1s ease-in-out infinite alternate;
+}
+
+.cagnotte:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
+}
+.cagnotte:hover::after {
+  transform: translate3d(0, 0, 0);
+  
+}
+
+/* -----------------------------------------------------------------------------
+                                Contacts
+--------------------------------------------------------------------------------*/
+
+#contactsDiv {
+    background-color: #101010;
+    color: white;
+    text-align: center;
+    padding: 10%;
+    padding-top: 5%;
+
+}
+
+#contactsDiv h1 {
+    font-size: 60px;
+}
+
+/*
+Icones
+*/
+
+.contactsUl {
+    padding: 0;
+    display: flex;
+    position: absolute;
+    margin:10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+  
+.contactsUl li {
+    list-style: none;
+    margin: 0 15px;
+}
+  
+.contactsUl li a {
+    position: relative; 
+    display: block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 63px;
+    background: #101010;
+    border-radius: 50%;
+    font-size: 30px;
+    color: #666;
+    transition: .5s;
+}
+
+/*
+Animation des icones lorsqu'on passe la souris dessus
+*/
+.contactsUl li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #101010;
+    transition: .5s;
+    transform: scale(.9);
+    z-index: -1;
+}
+  
+.contactsUl li a:hover::before {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #eeeeee;
+}
+  
+.contactsUl li a:hover {
+    color: #eeeeee;
+    box-shadow: 0 0 5px #eeeeee;
+    text-shadow: 0 0 5px #eeeeee;
+  }
+
+
+
+

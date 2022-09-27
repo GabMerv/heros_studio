@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename= 'css/style.css') }}"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <title>Heros Studio</title>
+  </head>
+  <body>
+    
+    <div id="navBar">
+        <br>        
+        <div id="stickedElements">
+        <br>
+          <ul>
+            
+            <li>
+              <a href="#presentationDiv" data-replace="Qui sommes nous?" class="glow"><span>Qui sommes nous?</span></a>
+            </li>
+            <li>
+              <a href="#teamDiv" data-replace="L'équipe"><span>L'équipe</span></a>
+            </li>
+            <li>
+              <a href="#projetDiv" data-replace="Le projet"><span>Le projet</span></a>
+            </li>
+            <li>
+              <img src="{{ url_for('static', filename='images/titre.png') }}" id="centerLogo" onclick="javascript:window.location='#';">
+            </li>
+            <li>
+              <a href="#tournageDiv" data-replace="Le tournage"><span>Le tournage</span></a>
+            </li>
+            <li>
+              <a href="#soutientDiv" data-replace="Soutenez nous!"><span>Soutenez nous!</span></a>
+            </li>
+            <li>
+              <a href="#contactsDiv" data-replace="Contacts"><span>Contacts</span></a>
+            </li>
+            
+          </ul>
+          <div id="semi-circle">
+            
+          </div>
+        </div>
+
+        
+    </div>
+    <img class="bannerimage" src="/static/images/banner_2.jpg">
+    </div>
+    <hr style="height:3px;border-width:0;color:#101010;">
+    
+    <div class="background-img">{% block content %} {% endblock %}</div>
+    <script src="{{url_for('static', filename='js/texte-anime.js')}}"></script>
+    <script src="{{url_for('static', filename='js/sticky.js')}}"></script>
+
+</body>
+</html>
